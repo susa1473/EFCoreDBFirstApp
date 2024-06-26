@@ -79,12 +79,12 @@ namespace EFCoreDBFirstApp.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int UserId)
         {
-            var productToDelete = await this._context.Users.FirstOrDefaultAsync(x => x.Id == UserId);
-            if (productToDelete != null)
+            var itemToDelete = await this._context.Users.FirstOrDefaultAsync(x => x.Id == UserId);
+            if (itemToDelete != null)
             {
-                this._context.RemoveRange(productToDelete);
+                this._context.RemoveRange(itemToDelete);
                 await this._context.SaveChangesAsync();
-                return Ok(productToDelete);
+                return Ok(itemToDelete);
             }
 
             return NotFound();
